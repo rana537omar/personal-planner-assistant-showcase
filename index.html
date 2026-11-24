@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personal Planner Assistant (Task &amp; Life Planner)</title>
+<meta name="description" content="Work and personal life in one planner: tasks in plain words, a time-blocked day plan, habits, goals, reminders and a personal chatbot that runs on your own computer. English and Arabic.">
+<meta property="og:title" content="Personal Planner Assistant (Task &amp; Life Planner)">
+<meta property="og:description" content="Work and personal life in one planner, with a personal chatbot that runs on your own computer.">
+<meta property="og:image" content="https://rana537omar.github.io/personal-planner-assistant-showcase/media/banner.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#ec4899">
+<link rel="icon" href="media/icon.svg">
+<style>
+:root { --bg: #f4f5f7; --panel: #ffffff; --line: #e1e4e9; --ink: #23262f; --muted: #6b7080; --pink: #ec4899; --pink-ink: #be185d; --blue: #38bdf8; --blue-ink: #0b7fb5; --wa: #168f48; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font: 16px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; color: var(--ink); background: var(--bg); }
+a { color: var(--pink-ink); }
+img, video { max-width: 100%; display: block; height: auto; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+header { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, .88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+header .wrap { display: flex; align-items: center; gap: 14px; height: 62px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.brand img { width: 30px; height: 30px; }
+.brand small { font-weight: 600; font-size: 13px; color: var(--pink-ink); }
+nav { margin-left: auto; display: flex; gap: 20px; align-items: center; }
+nav a { color: var(--muted); text-decoration: none; font-size: 14.5px; font-weight: 500; }
+nav a:hover { color: var(--ink); }
+.btn { display: inline-flex; align-items: center; gap: 9px; background: var(--wa); color: #fff !important; font-weight: 700; padding: 11px 20px; border-radius: 99px; text-decoration: none; }
+.btn.ghost { background: #fff; border: 1px solid var(--line); color: var(--ink) !important; }
+.btn svg { width: 19px; height: 19px; }
+.hero { background: radial-gradient(900px 560px at 15% 0%, #fce7f3 0%, transparent 65%), radial-gradient(900px 560px at 90% 10%, #e0f2fe 0%, transparent 65%), var(--bg); padding: 70px 0 40px; text-align: center; }
+.hero .logo { width: 84px; height: 84px; margin: 0 auto 18px; }
+.hero h1 { font: 700 clamp(36px, 6.2vw, 64px)/1.05 "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif; letter-spacing: -.03em; margin: 0; text-wrap: balance; }
+.hero .type { font-size: clamp(18px, 2.6vw, 25px); color: var(--pink-ink); font-weight: 600; margin: 12px 0 20px; }
+.hero p { max-width: 780px; margin: 0 auto 28px; font-size: 19px; color: #4b5060; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: -8px auto 28px; }
+.chips span { background: #fff; border: 1px solid var(--line); border-radius: 99px; padding: 5px 13px; font-size: 14px; color: #4b5060; }
+.cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.shot-hero { margin: 46px auto 0; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(40, 40, 80, .18); cursor: zoom-in; }
+section { padding: 70px 0; }
+h2 { font-size: clamp(26px, 4vw, 36px); letter-spacing: -.02em; margin: 0 0 8px; text-align: center; text-wrap: balance; }
+.lead { text-align: center; color: var(--muted); max-width: 780px; margin: 0 auto 36px; }
+video { width: 100%; border-radius: 14px; border: 1px solid var(--line); background: #000; box-shadow: 0 24px 70px rgba(40, 40, 80, .18); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+.card h3 { margin: 0 0 10px; font-size: 18px; }
+.card ul { margin: 0; padding-left: 18px; color: #4b5060; font-size: 15px; }
+.card li { margin-bottom: 7px; }
+.card li b { color: var(--ink); font-weight: 600; }
+.how { background: linear-gradient(180deg, #fff, var(--bg)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.how .grid { grid-template-columns: repeat(5, 1fr); }
+.how .card { text-align: center; }
+.how .n { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #f472b6, #38bdf8); color: #fff; display: grid; place-items: center; margin: 0 auto 12px; font-weight: 700; font-size: 19px; }
+.how p { margin: 0; color: #4b5060; font-size: 14.5px; }
+.note { text-align: center; color: var(--muted); font-size: 13.5px; margin: 22px auto 0; max-width: 880px; }
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+figure img { width: 100%; cursor: zoom-in; }
+figcaption { padding: 11px 15px; font-size: 14.5px; color: #4b5060; }
+figcaption b { color: var(--ink); }
+.phones { width: 100%; max-width: 900px; margin: 40px auto 0; border-radius: 14px; }
+.final { text-align: center; background: radial-gradient(800px 420px at 30% 100%, #fce7f3 0%, transparent 70%), radial-gradient(800px 420px at 80% 100%, #e0f2fe 0%, transparent 70%), var(--bg); }
+.final .btn { font-size: 19px; padding: 15px 30px; }
+footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--muted); font-size: 13.5px; text-align: center; }
+#lb { position: fixed; inset: 0; background: rgba(20, 22, 30, .9); display: none; place-items: center; z-index: 50; padding: 20px; cursor: zoom-out; }
+#lb.on { display: grid; }
+#lb img { max-height: 92vh; border-radius: 10px; }
+@media (max-width: 980px) { .how .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 860px) {
+  .grid, .how .grid { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: 1fr; }
+  nav a:not(.btn) { display: none; }
+  .brand small { display: none; }
+  .hero { padding-top: 44px; }
+  section { padding: 50px 0; }
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="#top"><img src="media/icon.svg" alt=""> Personal Planner Assistant <small>(Task &amp; Life Planner)</small></a>
+  <nav><a href="#demo">Demo</a><a href="#essentials">Essentials</a><a href="#features">Features</a><a href="#screens">Screenshots</a>
+    <a class="btn" href="https://wa.me/201208562225?text=Hello%2C%20I%20saw%20Personal%20Planner%20Assistant%20(Task%20%26%20Life%20Planner)%20and%20I%20would%20like%20to%20get%20the%20full%20system%20and%20the%20source%20code." target="_blank" rel="noopener">WhatsApp</a></nav>
+</div></header>
+
+<div class="hero" id="top"><div class="wrap">
+  <img class="logo" src="media/icon.svg" alt="">
+  <h1>Personal Planner Assistant</h1>
+  <div class="type">(Task &amp; Life Planner)</div>
+  <p>Your work and your personal life in one planner, with a personal chatbot that runs on your own computer. Capture tasks in plain words, get a time-blocked plan for your day, track habits and goals, and let the chatbot change your schedule once you say yes.</p>
+  <div class="chips"><span>💬 Local AI chatbot</span><span>⚡ Plan my day</span><span>🔔 Reminders</span><span>⏱ Focus timer</span><span>📋 Routines</span><span>🌐 English &amp; Arabic</span></div>
+  <div class="cta">
+    <a class="btn" href="https://wa.me/201208562225?text=Hello%2C%20I%20saw%20Personal%20Planner%20Assistant%20(Task%20%26%20Life%20Planner)%20and%20I%20would%20like%20to%20get%20the%20full%20system%20and%20the%20source%20code." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.7-5A8.5 8.5 0 1 1 8 19.3z"/></svg>Get the full system &amp; code</a>
+    <a class="btn ghost" href="#demo">Watch the demo</a>
+  </div>
+  <img class="shot-hero zoom" src="media/today.png" alt="Today page: top 3 focus, overdue tasks, work and personal tasks and a time-blocked day plan" width="1920" height="1080">
+</div></div>
+
+<section id="demo"><div class="wrap">
+  <h2>See the whole planner in under four minutes</h2>
+  <p class="lead">A captioned walkthrough with no sound. It shows tasks in plain words, Plan my day and the personal chatbot (answering, proposing changes, remembering). Then focus, reminders, Ctrl+K, habits, routines, goals and the weekly review, followed by prayer-aware planning, dark mode and Arabic.</p>
+  <video controls preload="none" poster="media/video-poster.png" src="media/Personal-Planner-Assistant-demo.mp4"></video>
+  <p class="note"><a href="https://github.com/rana537omar/personal-planner-assistant-showcase/releases/download/demo-v1/Personal-Planner-Assistant-demo.mp4">Download the video (MP4, 28 MB)</a></p>
+</div></section>
+
+<section id="essentials" class="how"><div class="wrap">
+  <h2>The five essentials</h2>
+  <p class="lead">What you open a planner for, done properly, for work and for life.</p>
+  <div class="grid">
+    <div class="card"><div class="n">1</div><h3>Tasks in plain words</h3><p>Dates, times, priority and lists are understood as you type.</p></div>
+    <div class="card"><div class="n">2</div><h3>Plan my day</h3><p>A time-blocked schedule around your hours and appointments.</p></div>
+    <div class="card"><div class="n">3</div><h3>Personal chatbot</h3><p>Knows your planner and runs on local AI on your own computer.</p></div>
+    <div class="card"><div class="n">4</div><h3>Work &amp; personal</h3><p>Every task belongs to one; one switch shows either or both.</p></div>
+    <div class="card"><div class="n">5</div><h3>Reminders</h3><p>Before timed tasks, every morning and evening, even with the tab closed.</p></div>
+  </div>
+</div></section>
+
+<section id="features"><div class="wrap">
+  <h2>Everything in one place</h2>
+  <p class="lead">Built for daily use, from the first coffee to the evening wrap-up.</p>
+  <div class="grid">
+    <div class="card"><h3>Planning</h3><ul>
+      <li><b>Today</b>: top 3, overdue items, work and personal tasks.</li>
+      <li><b>Plan my day</b> by priority and deadline, with breaks.</li>
+      <li><b>Inbox, Upcoming and Calendar</b> with drag and drop.</li>
+      <li><b>Recurring tasks</b> on any days you choose.</li></ul></div>
+    <div class="card"><h3>Personal chatbot</h3><ul>
+      <li><b>Free conversation</b> on local AI (Ollama).</li>
+      <li><b>Changes your plan with your OK</b>: Yes or No first.</li>
+      <li><b>Memory</b> of facts you tell it.</li>
+      <li><b>Four personalities</b>, and a bubble on every page.</li></ul></div>
+    <div class="card"><h3>Focus</h3><ul>
+      <li><b>Focus timer</b> that learns your real task lengths.</li>
+      <li><b>Break it down</b> into clear steps.</li>
+      <li><b>Priority matrix</b>: urgent versus important.</li>
+      <li><b>Ctrl+K</b> to search or run any command.</li></ul></div>
+    <div class="card"><h3>Habits and goals</h3><ul>
+      <li><b>Habits</b> with streaks and weekly targets.</li>
+      <li><b>Routines and templates</b> started in one click.</li>
+      <li><b>Goals</b> that fill up as linked tasks get done.</li>
+      <li><b>Weekly review</b> with your work-life balance.</li></ul></div>
+    <div class="card"><h3>Reminders</h3><ul>
+      <li><b>In-app cards, desktop pop-ups and Windows notifications</b>.</li>
+      <li><b>Morning briefing</b> and an <b>evening wrap-up</b>.</li>
+      <li><b>Done and Snooze</b> right from the reminder.</li>
+      <li><b>Optional prayer times</b> in the plan and reminders.</li></ul></div>
+    <div class="card"><h3>Made for you</h3><ul>
+      <li><b>English and Arabic</b>, right to left, Arabic task typing.</li>
+      <li><b>Dark and light</b>, phone to desktop.</li>
+      <li><b>Install it as an app</b>; use it on your phone with a PIN.</li>
+      <li><b>Calendar import</b>, backup and restore.</li></ul></div>
+  </div>
+  <p class="note"><b>Good to know:</b>
+    <br>Open conversation needs Ollama and a local model on the computer. Without it, all planner commands still work.
+    <br>Every change the chatbot suggests is shown first and needs your OK.
+    <br>Reminders need the planner running, in a tab or in the background.
+    <br>Phone access works on the same Wi-Fi with a PIN. Offline use on a phone needs HTTPS hosting.
+    <br>Voice input is not included, so that nothing is sent online.
+    <br>Prayer times are calculated and can differ by a minute or two.
+    <br>All people and data shown are fictional demo data.</p>
+</div></section>
+
+<section id="screens" class="how"><div class="wrap">
+  <h2>Screenshots</h2>
+  <p class="lead">Click any image to enlarge it.</p>
+  <div class="gallery">
+    <figure><img class="zoom" loading="lazy" src="media/quick-add.png" alt="Quick add bar with a live preview of the parsed date, time, priority and area" width="1920" height="1080"><figcaption><b>Quick add</b>: type naturally and see what was understood.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/chatbot.png" alt="Chatbot describing the day and a remembered fact in the side panel" width="1920" height="1080"><figcaption><b>Personal chatbot</b>: knows your day and what you told it.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/chatbot-changes.png" alt="Chatbot proposing to add a dentist appointment with Yes and No buttons" width="1920" height="1080"><figcaption><b>Changes with your OK</b>: nothing happens until you say yes.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/widget.png" alt="Chat bubble open over the calendar listing overdue tasks" width="1920" height="1080"><figcaption><b>On every page</b>: the chat bubble over the calendar.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/calendar.png" alt="Month calendar with work and personal tasks" width="1920" height="1080"><figcaption><b>Calendar</b>: drag tasks between days.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/upcoming.png" alt="Upcoming view grouped by day" width="1920" height="1080"><figcaption><b>Upcoming</b>: the next 14 days.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/drawer.png" alt="Task editor with priority, date, repeat, goal and subtasks" width="1920" height="1080"><figcaption><b>Task editor</b>: steps, repeats, lists, goals and focus.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/focus.png" alt="Focus timer bar counting down on a task" width="1920" height="1080"><figcaption><b>Focus timer</b>: Pomodoro sessions on any task.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/focus-done.png" alt="Focus session complete card and the break timer" width="1920" height="1080"><figcaption><b>Session complete</b>: logged, then a short break.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/palette.png" alt="Command bar searching tasks, notes, goals and routines" width="1920" height="1080"><figcaption><b>Ctrl+K</b>: search everything or run a command.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/matrix.png" alt="Priority matrix with four quadrants" width="1920" height="1080"><figcaption><b>Priority matrix</b>: urgent versus important.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/prayer-plan.png" alt="Day plan with prayer time blocks" width="1920" height="1080"><figcaption><b>Prayer times</b>: the plan works around the five prayers.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/habits.png" alt="Habit grid with streaks and weekly targets" width="1920" height="1080"><figcaption><b>Habits</b>: streaks and weekly targets.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/routines.png" alt="Routine cards with steps and Start today buttons" width="1920" height="1080"><figcaption><b>Routines</b>: checklists started in one click.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/goals.png" alt="Goal cards with progress bars" width="1920" height="1080"><figcaption><b>Goals</b>: progress from linked tasks.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/review.png" alt="Weekly review with a chart of completed tasks" width="1920" height="1080"><figcaption><b>Weekly review</b>: what you finished and your balance.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/notes.png" alt="Notes as cards" width="1920" height="1080"><figcaption><b>Notes</b>: ideas and meeting notes.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/settings-reminders.png" alt="Reminder settings with briefing time and Windows notifications" width="1920" height="1080"><figcaption><b>Reminders</b>: briefing, wrap-up, Windows notifications.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/settings-phone.png" alt="Phone access PIN and calendar import settings" width="1920" height="1080"><figcaption><b>Phone and import</b>: PIN access, calendar import, backups.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/dark.png" alt="Today page in dark mode" width="1920" height="1080"><figcaption><b>Dark mode</b>.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/arabic.png" alt="Today page in Arabic, right to left" width="1920" height="1080"><figcaption><b>Arabic</b>: a full right-to-left interface.</figcaption></figure>
+    <figure><img class="zoom" loading="lazy" src="media/arabic-chat.png" alt="Chatbot proposing a change in Arabic" width="1920" height="1080"><figcaption><b>Arabic chat</b>: the chatbot understands Arabic.</figcaption></figure>
+  </div>
+  <img class="phones" loading="lazy" src="media/phones.png" alt="Today, the chatbot, routines and the Arabic Today view on phones" width="1600" height="1000">
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>Get the full system</h2>
+  <p class="lead">Want Personal Planner Assistant for yourself, your team or your clients, a live demo, or the complete source code? Message me on WhatsApp.</p>
+  <a class="btn" href="https://wa.me/201208562225?text=Hello%2C%20I%20saw%20Personal%20Planner%20Assistant%20(Task%20%26%20Life%20Planner)%20and%20I%20would%20like%20to%20get%20the%20full%20system%20and%20the%20source%20code." target="_blank" rel="noopener">WhatsApp +20 120 856 2225</a>
+</div></section>
+
+<footer><div class="wrap">Copyright © 2026 Rana Omar. All rights reserved. Personal Planner Assistant and its source code are proprietary and are not included in this showcase. All people and data shown are fictional demo data.</div></footer>
+
+<div id="lb"><img alt=""></div>
+<script>
+const lb = document.getElementById('lb');
+document.querySelectorAll('.zoom').forEach((i) => i.addEventListener('click', () => { lb.firstChild.src = i.src; lb.firstChild.alt = i.alt; lb.classList.add('on'); }));
+lb.addEventListener('click', () => lb.classList.remove('on'));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lb.classList.remove('on'); });
+</script>
+</body>
+</html>
